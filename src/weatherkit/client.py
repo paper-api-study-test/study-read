@@ -22,3 +22,11 @@ class WeatherClient:
         data = response.json()
         self.cache.set(city, data)
         return data
+
+    def forecast(self, city: str, days: int = 3) -> list[dict]:
+        if not 1 <= days <= 7:
+            raise ValueError("days must be between 1 and 7")
+        response = httpx.get(f"{BASE_URL}/forecast", params={"q": city, "days": days, "key": self.api_key}, timeout=self.timeout)
+        if response.status_code != 200:
+            raise WeatherAPIError(response.status_code, response.text)
+        return response.json()["days"]
