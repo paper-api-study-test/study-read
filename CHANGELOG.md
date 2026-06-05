@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0 (2026-06-05)
+
+- New forecast command and WeatherClient.forecast.
+- Pressure conversion (hPa to inHg).
+- Fix: expired cache entries are removed.
+
 ## 0.2.0 (2026-04-28)
 
 - Cache responses for 10 minutes.
