@@ -12,3 +12,11 @@ def kmh_to_mph(kmh: float) -> float:
 
 def hpa_to_inhg(hpa: float) -> float:
     return hpa * 0.0295299830714
+
+
+def dew_point(celsius: float, humidity: float) -> float:
+    """Approximate dew point in Celsius (Magnus formula)."""
+    import math
+    a, b = 17.27, 237.7
+    alpha = (a * celsius) / (b + celsius) + math.log(humidity / 100)
+    return (b * alpha) / (a - alpha)
